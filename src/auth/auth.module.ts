@@ -7,6 +7,8 @@ import {
   RefreshToken,
   RefreshTokenSchema,
 } from './schemas/refresh-token.schema';
+import { ResetToken, ResetTokenSchema } from './schemas/reset-token.schema';
+import { MailService } from 'src/services/mail.service';
 
 @Module({
   imports: [
@@ -19,13 +21,13 @@ import {
         name: RefreshToken.name,
         schema: RefreshTokenSchema,
       },
-      // {
-      //   name: ResetToken.name,
-      //   schema: ResetTokenSchema,
-      // },
+      {
+        name: ResetToken.name,
+        schema: ResetTokenSchema,
+      },
     ]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, MailService],
 })
 export class AuthModule {}
